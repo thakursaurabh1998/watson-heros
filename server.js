@@ -31,6 +31,8 @@ app.post("/comic", (req, res) => {
     classifier_ids: "marvel_vs_dc_1889700289",
     threshold: 0.5
   };
+  // const temp = `{"images":[{"classifiers":[{"classifier_id":"marvel_vs_dc_1889700289","name":"marvel_vs_dc","classes":[{"class":"dc","score":0.918}]}],"source_url":"https://i1.wp.com/batman-news.com/wp-content/uploads/2015/06/aquaman.jpg?resize=696%2C1043&quality=80&strip=info&ssl=1","resolved_url":"https://i1.wp.com/batman-news.com/wp-content/uploads/2015/06/aquaman.jpg?resize=696%252C1043&quality=80&strip=info&ssl=1"}],"images_processed":1,"custom_classes":2}`
+  // res.status(200).send(JSON.parse(temp));
 
   visualRecognition.classify(params, (err, response) => {
     if (!err) {
@@ -41,7 +43,8 @@ app.post("/comic", (req, res) => {
   });
 });
 
-const port = process.env.PORT;
+let port = process.env.PORT;
+// port = 4000;
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
